@@ -14,18 +14,19 @@ import "./styles.css";
 
 // look at `styles.css` for a hint
 
-function ColorChanger(prop) {
+export default function App() {
   return (
-    <div>
-      <div className={prop.className}></div>
+    <div className="App">
+      <h1>Cohort React Assessment</h1>
+      <h2>Color-Changing Box</h2>
+      <ColorChanger />
     </div>
   );
 }
 
-export default function App() {
+const ColorChanger = () => {
   const [colorArr, setColorArr] = React.useState([]);
   const colors = ["box red", "box green", "box blue", "box pink", "box orange"];
-
   const [count, setCount] = React.useState(-1);
 
   const handleClick = () => {
@@ -35,15 +36,14 @@ export default function App() {
     } else if (count === 4) {
       setCount(count - 4);
     }
-    console.log(count);
-  };
+   };
 
   return (
-    <div className="App">
-      <h1>Cohort React Assessment</h1>
-      <h2>Color-Changing Box</h2>
-      <ColorChanger className={colorArr[count]} />
-      <button onClick={handleClick}> Change Color </button>
+    <div>
+      {colorArr.length < 1 && <div className="box"></div>}
+      <div className={colorArr[count]}></div>
+      <button onClick={handleClick}>Change Color</button>
     </div>
   );
-}
+};
+
