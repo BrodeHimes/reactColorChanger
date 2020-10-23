@@ -26,7 +26,7 @@ export default function App() {
 
 const ColorChanger = () => {
   const [colorArr, setColorArr] = React.useState([]);
-  const colors = ["box red", "box green", "box blue", "box pink", "box orange"];
+  const colors = ["red", "green", "blue", "pink", "orange"];
   const [count, setCount] = React.useState(-1);
 
   const handleClick = () => {
@@ -36,14 +36,12 @@ const ColorChanger = () => {
     } else if (count === 4) {
       setCount(count - 4);
     }
-   };
+  };
 
   return (
     <div>
-      {colorArr.length < 1 && <div className="box"></div>}
-      <div className={colorArr[count]}></div>
+      <div className={`box ${colorArr[count]}`}></div>
       <button onClick={handleClick}>Change Color</button>
     </div>
   );
 };
-
